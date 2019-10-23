@@ -1,0 +1,26 @@
+from math import *
+def secant (fn,x0,x1,iterr,err):
+    i=1
+    while True :
+ #   for interation in range (iterr):
+       try:
+           xnew = x1-((x1-x0)/(fn(x1)-fn(x0))) *fn(x1)
+       except ZeroDivisionError:
+           print("dividing by zero appears during secant method")
+       if  (abs(xnew-x1) <= err)or(i==iterr):
+             return xnew ,i
+             break
+       else:
+         x0 = x1
+         x1 = xnew
+         i +=1
+
+
+
+# testing
+x0 = float(input('x0'))
+x1 = float(input('x1'))
+r,u= secant(f,x0,x1,4,0)
+f = lambda x: 3*x**4 -x*10 +5
+print(f'root = {r} at the iteration number {u}')
+
